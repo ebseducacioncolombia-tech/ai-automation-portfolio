@@ -1,0 +1,761 @@
+{
+  "name": "Factura Telegram Trigger Gmail V5 (OCR & Deep Seek con Gmail)",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## 🧾 SISTEMA DE FACTURAS\n**Automatización de Procesamiento**\n\nExtrae y almacena datos de facturas\nusando IA de forma automática.\n\n✨ Características:\n• OCR Vision Google + Deep Seek\n• Validación automática\n• Almacenamiento en Sheets\n• Notificaciones en Telegram\n\n\n**EBS**\n📧 Contacto ebs@ebs.com.co\n🔧 Versión: 1.0\n📅 Actualizado:  Nov 2025",
+        "height": 356,
+        "width": 396
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -464,
+        -32
+      ],
+      "typeVersion": 1,
+      "id": "ID_PLACEHOLDER",
+      "name": "Sticky Note - Descripción"
+    },
+    {
+      "parameters": {
+        "content": "## 📥 ENTRADA\nRecepción de mensajes desde Telegram",
+        "height": 316,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        96,
+        544
+      ],
+      "typeVersion": 1,
+      "id": "ID_PLACEHOLDER",
+      "name": "Sticky Note - Entrada"
+    },
+    {
+      "parameters": {
+        "content": "## ✅ VALIDACIÓN\nVerifica que el mensaje contenga una imagen",
+        "height": 332,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        400,
+        384
+      ],
+      "typeVersion": 1,
+      "id": "ID_PLACEHOLDER",
+      "name": "Sticky Note - Validación"
+    },
+    {
+      "parameters": {
+        "content": "## 🤖 PROCESAMIENTO IA\nExtracción y normalización de datos\n\n🔍 Dep Seek\n⚙️ Normalización universal\n📊 Formato estructurado\n\nPENDIENTES: PDF Y AGREGAR TRIGGER GMAIL Y NODO SIIGO",
+        "height": 668,
+        "width": 304,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        688,
+        32
+      ],
+      "typeVersion": 1,
+      "id": "ID_PLACEHOLDER",
+      "name": "Sticky Note - Procesamiento"
+    },
+    {
+      "parameters": {
+        "content": "## 📤 SALIDA\nNotificación y almacenamiento\n\n💬 Resumen a Telegram\n💾 Guardado\n✅ Confirmación exitosa",
+        "height": 716,
+        "width": 544,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1216,
+        304
+      ],
+      "typeVersion": 1,
+      "id": "ID_PLACEHOLDER",
+      "name": "Sticky Note - Salida"
+    },
+    {
+      "parameters": {
+        "content": "## ⚠️ ERROR\nSin imagen detectada\n\nSe notifica al usuario para\nque envíe una imagen válida",
+        "height": 268,
+        "width": 428,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        416,
+        784
+      ],
+      "typeVersion": 1,
+      "id": "ID_PLACEHOLDER",
+      "name": "Sticky Note - Error"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('📱 Recibir Mensaje Telegram').item.json.message.chat.id }}",
+        "text": "={{ $json.mensajeTelegram }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "id": "ID_PLACEHOLDER",
+      "name": "💬 Enviar Resumen Factura",
+      "type": "n8n-nodes-base.telegram",
+      "position": [
+        1392,
+        592
+      ],
+      "typeVersion": 1.1,
+      "webhookId": "WEBHOOK_ID_PLACEHOLDER",
+      "credentials": {
+        "telegramApi": {
+          "id": "CREDENTIAL_ID_PLACEHOLDER",
+          "name": "TELEGRAMAPI_CREDENTIAL_PLACEHOLDER"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.message.chat.id }}",
+        "text": "⚠️ Por favor sube una imagen de factura para procesarla.",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "id": "ID_PLACEHOLDER",
+      "name": "❌ Notificar Error: Sin Imagen",
+      "type": "n8n-nodes-base.telegram",
+      "position": [
+        640,
+        848
+      ],
+      "typeVersion": 1.1,
+      "webhookId": "WEBHOOK_ID_PLACEHOLDER",
+      "credentials": {
+        "telegramApi": {
+          "id": "CREDENTIAL_ID_PLACEHOLDER",
+          "name": "TELEGRAMAPI_CREDENTIAL_PLACEHOLDER"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "operator": {
+                      "type": "array",
+                      "operation": "exists",
+                      "singleValue": true
+                    },
+                    "leftValue": "={{ $json.message.photo }}",
+                    "rightValue": "",
+                    "id": "ID_PLACEHOLDER"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Con Imagen"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "ID_PLACEHOLDER",
+                    "operator": {
+                      "type": "array",
+                      "operation": "notExists",
+                      "singleValue": true
+                    },
+                    "leftValue": "={{ $json.message.photo }}",
+                    "rightValue": ""
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Sin Imagen"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ID_PLACEHOLDER",
+      "name": "🔍 Validar Imagen",
+      "type": "n8n-nodes-base.switch",
+      "position": [
+        464,
+        512
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
+        "jsCode": "// ===================================================\n// NORMALIZADOR DE FACTURAS - DeepSeek + Google Sheets\n// Sistema automatizado de procesamiento de facturas\n// ===================================================\n\n// 1) OBTENER DATOS DEL NODO ANTERIOR\nconst input = $input.item.json;\n\n// Extraer el texto JSON de la estructura de DeepSeek\nconst rawContent = \n  input?.response?.generations?.[0]?.[0]?.text ??\n  input?.text ??\n  input?.result ??\n  '{}';\n\n// ===================================================\n// 2) FUNCIÓN PARA LIMPIAR Y NORMALIZAR NÚMEROS\n// ===================================================\nfunction limpiarNumero(value) {\n  // Si ya es número, retornar directamente\n  if (typeof value === 'number') return value;\n  \n  // Si es vacío, N/A o \"0\", retornar 0\n  if (!value || value === 'N/A' || value === '0') return 0;\n  \n  // Limpiar: quitar todo excepto dígitos, puntos, comas y signos\n  let cleaned = String(value).trim().replace(/[^\\d.,-]/g, '');\n  \n  // Contar separadores\n  const numPuntos = (cleaned.match(/\\./g) || []).length;\n  const numComas = (cleaned.match(/,/g) || []).length;\n  const ultimoPunto = cleaned.lastIndexOf('.');\n  const ultimaComa = cleaned.lastIndexOf(',');\n  \n  // CASO 1: Tiene PUNTO Y COMA\n  if (numPuntos > 0 && numComas > 0) {\n    if (ultimaComa > ultimoPunto) {\n      // Formato: 1.234,56 → punto=miles, coma=decimal\n      cleaned = cleaned.replace(/\\./g, '').replace(',', '.');\n    } else {\n      // Formato: 1,234.56 → coma=miles, punto=decimal\n      cleaned = cleaned.replace(/,/g, '');\n    }\n  }\n  // CASO 2: Solo tiene COMA\n  else if (numComas > 0 && numPuntos === 0) {\n    const partes = cleaned.split(',');\n    const ultimaParte = partes[partes.length - 1];\n    \n    // Si después de la coma hay ≤2 dígitos → es decimal (ej: 12,50)\n    if (ultimaParte.length <= 2) {\n      cleaned = cleaned.replace(',', '.');\n    }\n    // Si después de la coma hay 3 dígitos → puede ser miles\n    else if (ultimaParte.length === 3) {\n      cleaned = cleaned.replace(/,/g, '');\n    }\n  }\n  // CASO 3: Solo tiene PUNTO\n  else if (numPuntos > 0 && numComas === 0) {\n    const partes = cleaned.split('.');\n    const ultimaParte = partes[partes.length - 1];\n    \n    // Si hay múltiples puntos O después del punto hay 3 dígitos → miles\n    if (numPuntos > 1 || ultimaParte.length === 3) {\n      cleaned = cleaned.replace(/\\./g, '');\n    }\n  }\n  \n  // Convertir a número\n  const numero = parseFloat(cleaned);\n  return isNaN(numero) ? 0 : numero;\n}\n\n// ===================================================\n// 3) PROCESAR LA RESPUESTA DE LA IA\n// ===================================================\ntry {\n  // Extraer el JSON de la respuesta\n  const jsonMatch = rawContent.match(/\\{[\\s\\S]*\\}/);\n  if (!jsonMatch) {\n    throw new Error('No se encontró un JSON válido en la respuesta de la IA');\n  }\n  \n  const factura = JSON.parse(jsonMatch[0]);\n  \n  // ===================================================\n  // 4) NORMALIZAR Y ESTRUCTURAR DATOS\n  // ===================================================\n  const datos = {\n    // Datos de texto\n    emisor: factura.emisor || 'N/A',\n    nit_emisor: factura.nit_emisor || factura.id_fiscal_emisor || 'N/A',\n    cliente: factura.cliente || 'N/A',\n    numero_factura: factura.numero_factura || 'N/A',\n    fecha_emision: factura.fecha_emision || 'N/A',\n    fecha_vencimiento: factura.fecha_vencimiento || 'N/A',\n    \n    // Datos numéricos (limpiar y convertir)\n    subtotal: limpiarNumero(factura.subtotal),\n    descuento: limpiarNumero(factura.descuento),\n    ahorro: limpiarNumero(factura.ahorro),\n    impuestos: limpiarNumero(factura.impuestos),\n    iva_5: limpiarNumero(factura.iva_5),\n    iva_19: limpiarNumero(factura.iva_19),\n    iva_0: limpiarNumero(factura.iva_0 || 0),\n    total: limpiarNumero(factura.total),\n    \n    // Otros datos\n    moneda: factura.moneda || 'COP',\n    concepto: factura.concepto || 'N/A',\n    observaciones: factura.observaciones || 'N/A',\n    resolucion_dian: factura.resolucion_dian || 'N/A',\n    qr: factura.qr || 'N/A'\n  };\n  \n  // ===================================================\n  // 5) FORMATEAR NÚMEROS PARA TELEGRAM\n  // ===================================================\n  const formatear = (num) => new Intl.NumberFormat('es-CO', {\n    minimumFractionDigits: 0,\n    maximumFractionDigits: 0\n  }).format(num);\n  \n  // ===================================================\n  // 6) CONSTRUIR MENSAJE PARA TELEGRAM\n  // ===================================================\n  const descLinea = datos.descuento > 0 \n    ? `🔻 <b>Descuento:</b> $${formatear(datos.descuento)}\\n` \n    : '';\n  \n  const ahorroLinea = datos.ahorro > 0 \n    ? `💡 <b>Ahorro:</b> $${formatear(datos.ahorro)}\\n` \n    : '';\n  \n  const mensajeTelegram = `\n🧾 <b>Factura Procesada</b>\n\n🏢 <b>Emisor:</b> ${datos.emisor}\n📋 <b>NIT:</b> ${datos.nit_emisor}\n👤 <b>Cliente:</b> ${datos.cliente}\n\n🔢 <b>Factura:</b> <code>${datos.numero_factura}</code>\n📅 <b>Fecha:</b> ${datos.fecha_emision}\n\n💰 <b>Subtotal:</b> $${formatear(datos.subtotal)}\n${descLinea}${ahorroLinea}💸 <b>Impuestos:</b> $${formatear(datos.impuestos)}\n   • IVA 5%: $${formatear(datos.iva_5)}\n   • IVA 19%: $${formatear(datos.iva_19)}\n\n<b>✅ TOTAL: $${formatear(datos.total)} ${datos.moneda}</b>\n\n📝 ${datos.concepto}\n\n🔐 DIAN: ${datos.resolucion_dian}\n\n<i>✨ Sistema automatizado</i>\n  `.trim();\n  \n  // ===================================================\n  // 7) RETORNAR DATOS ESTRUCTURADOS\n  // ===================================================\n  return {\n    json: {\n      // Para Telegram\n      mensajeTelegram: mensajeTelegram,\n      \n      // Para Google Sheets (números ya parseados correctamente)\n      fecha_emision: datos.fecha_emision,\n      fecha_vencimiento: datos.fecha_vencimiento,\n      emisor: datos.emisor,\n      nit_emisor: datos.nit_emisor,\n      cliente: datos.cliente,\n      numero_factura: datos.numero_factura,\n      subtotal: datos.subtotal,\n      descuento: datos.descuento,\n      ahorro: datos.ahorro,\n      impuestos: datos.impuestos,\n      iva_5: datos.iva_5,\n      iva_19: datos.iva_19,\n      iva_0: datos.iva_0,\n      total: datos.total,\n      moneda: datos.moneda,\n      concepto: datos.concepto,\n      observaciones: datos.observaciones,\n      resolucion_dian: datos.resolucion_dian,\n     \n    }\n  };\n\n} catch (error) {\n  // ===================================================\n  // 8) MANEJO DE ERRORES\n  // ===================================================\n  return {\n    json: {\n      mensajeTelegram: `❌ <b>Error al procesar factura</b>\\n\\n${error.message}\\n\\n<i>Verifica el formato del JSON</i>`,\n      error: error.message,\n      raw: rawContent\n    }\n  };\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1056,
+        288
+      ],
+      "id": "ID_PLACEHOLDER",
+      "name": "⚙️ Normalizar Datos"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://vision.googleapis.com/v1/images:annotate",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "key",
+              "value": "GOOGLE_VISION_API_KEY"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"requests\": [\n    {\n      \"image\": {\n        \"content\": \"{{$input.item.binary.data.data}}\"\n      },\n      \"features\": [\n        {\n          \"type\": \"DOCUMENT_TEXT_DETECTION\"\n        }\n      ]\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        496,
+        160
+      ],
+      "id": "ID_PLACEHOLDER",
+      "name": "Google Vision OCR"
+    },
+    {
+      "parameters": {
+        "content": "AGEGAR SIIGO"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1584,
+        -16
+      ],
+      "id": "ID_PLACEHOLDER",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "AGREGAR  GMAIL Y QUE ACEPTE PDF"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -224,
+        464
+      ],
+      "id": "ID_PLACEHOLDER",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=TEXTO DE LA FACTURA:\n---\n{{$json.responses[0].textAnnotations[0].description}}\n---\n\nAnaliza este texto de factura colombiana y extrae EXACTAMENTE estos datos en formato JSON válido.\n\nCAMPOS REQUERIDOS (copia el formato exacto):\n{\n  \"emisor\": \"nombre de la empresa que emite (busca al inicio o cerca de logo/encabezado)\",\n  \"nit_emisor\": \"NIT del emisor (formato XXX-XXXXXX-X o similar)\",\n  \"cliente\": \"nombre del cliente si aparece, sino N/A\",\n  \"numero_factura\": \"número único de factura (puede estar como 'No.', '#', 'Factura No')\",\n  \"fecha_emision\": \"fecha en formato YYYY-MM-DD (busca fecha de la factura)\",\n  \"subtotal\": \"valor antes de impuestos (busca SUBTOTAL)\",\n  \"descuento\": \"valor de descuento si existe, sino 0\",\n  \"ahorro\": \"valor de ahorro/puntos redimidos si existe, sino 0\",\n  \"impuestos\": \"total de impuestos (suma de todos los IVA)\",\n  \"iva_5\": \"valor IVA 5% si existe, sino 0\",\n  \"iva_19\": \"valor IVA 19% si existe, sino 0\",\n  \"total\": \"VALOR TOTAL o TOTAL A PAGAR\",\n  \"moneda\": \"COP\",\n  \"concepto\": \"descripción breve de lo comprado\",\n  \"resolucion_dian\": \"número de resolución DIAN si aparece\"\n}\n\nINSTRUCCIONES CRÍTICAS:\n1. Lee TODO el texto cuidadosamente\n2. Busca los valores numéricos asociados a cada campo\n3. Para SUBTOTAL: busca la palabra \"SUBTOTAL\" y toma el número que aparece\n4. Para DESCUENTO: busca \"DESCUENTO\" y toma el número\n5. Para IMPUESTOS/IVA: busca en la sección de discriminación de impuestos\n6. Para TOTAL: busca \"VALOR TOTAL\", \"TOTAL\", \"TOTAL A PAGAR\"\n7. Los números pueden tener puntos o comas, déjalos tal cual\n8. Si un campo no existe, usa \"N/A\" para texto o \"0\" para números\n\nRESPONDE SOLO CON EL JSON, SIN ```json``` NI EXPLICACIONES.",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        720,
+        320
+      ],
+      "id": "ID_PLACEHOLDER",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        800,
+        544
+      ],
+      "id": "ID_PLACEHOLDER",
+      "name": "DeepSeek Chat Model",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "CREDENTIAL_ID_PLACEHOLDER",
+          "name": "DEEPSEEKAPI_CREDENTIAL_PLACEHOLDER"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "GOOGLE_SHEET_ID",
+          "mode": "list",
+          "cachedResultName": "Facturas Automatizadas n8n",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/GOOGLE_SHEET_ID/edit"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Facturas",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/GOOGLE_SHEET_ID/edit"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "fecha_emision": "={{ $json.fecha_emision }}",
+            "fecha_vencimiento": "={{ $json.fecha_vencimiento }}",
+            "emisor": "={{ $json.emisor }}",
+            "nit_emisor": "={{ $json.nit_emisor }}",
+            "cliente": "={{ $json.cliente }}",
+            "id_fiscal_cliente": "={{ $json.id_fiscal_cliente }}",
+            "numero_factura": "={{ $json.numero_factura }}",
+            "subtotal": "={{ $json.subtotal }}",
+            "descuento": "={{ $json.descuento }}",
+            "ahorro": "={{ $json.ahorro }}\n",
+            "impuestos": "={{ $json.impuestos }}",
+            "iva_5": "={{ $json.iva_5 }}",
+            "iva_19": "={{ $json.iva_19 }}",
+            "iva_0": "={{ $json.iva_0 }}",
+            "total": "={{ $json.total }}",
+            "moneda": "={{ $json.moneda }}",
+            "concepto": "={{ $json.concepto }}",
+            "observaciones": "={{ $json.observaciones }}",
+            "resolucion_dian": "={{ $json.resolucion_dian }}"
+          },
+          "matchingColumns": [
+            "fecha_emision"
+          ],
+          "schema": [
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "fecha_emision",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "fecha_vencimiento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "emisor",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "nit_emisor",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "id_fiscal_cliente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "numero_factura",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "subtotal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "descuento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "ahorro",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "impuestos",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "iva_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "iva_19",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "iva_0",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "total",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "moneda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "concepto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "observaciones",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "resolucion_dian",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "qr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "ocr_completo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "ID_PLACEHOLDER",
+              "displayName": "procesado_por",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1376,
+        0
+      ],
+      "id": "ID_PLACEHOLDER",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "CREDENTIAL_ID_PLACEHOLDER",
+          "name": "GOOGLESHEETSOAUTH2API_CREDENTIAL_PLACEHOLDER"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## BASE DE DATOS\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBBDD Google Sheets ya normalizada",
+        "height": 256
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1312,
+        -48
+      ],
+      "id": "ID_PLACEHOLDER",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## OCR CLOUD VISION\nConvertir a Base64",
+        "height": 272
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        416,
+        48
+      ],
+      "id": "ID_PLACEHOLDER",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Nodo SET \nNormaliza o estandariza la información de las facturas",
+        "height": 384,
+        "width": 192
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1024,
+        128
+      ],
+      "id": "ID_PLACEHOLDER",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "filters": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        144,
+        640
+      ],
+      "id": "ID_PLACEHOLDER",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "CREDENTIAL_ID_PLACEHOLDER",
+          "name": "GMAILOAUTH2_CREDENTIAL_PLACEHOLDER"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "🔍 Validar Imagen": {
+      "main": [
+        [
+          {
+            "node": "Google Vision OCR",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "❌ Notificar Error: Sin Imagen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "⚙️ Normalizar Datos": {
+      "main": [
+        [
+          {
+            "node": "💬 Enviar Resumen Factura",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Vision OCR": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "⚙️ Normalizar Datos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "🔍 Validar Imagen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "VERSIONID_PLACEHOLDER",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "N8N_INSTANCE_ID_PLACEHOLDER"
+  },
+  "id": "ID_PLACEHOLDER",
+  "tags": []
+}
