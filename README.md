@@ -1,55 +1,87 @@
-# AI Automation Portfolio – Carlos Restrepo
+# AI Automation Portfolio — Carlos Restrepo
 
-This repository contains production-grade AI automation workflows built using n8n, OpenAI, PostgreSQL, and Twilio WhatsApp API.
+Production-grade AI automation workflows built using n8n, OpenAI, PostgreSQL, Twilio WhatsApp API, Google Vision OCR, and Google Sheets.
 
-These systems demonstrate how LLM-powered agents can be integrated into real-world automation pipelines with persistent memory, structured outputs, and automated downstream actions.
-
----
-
-## Project: WhatsApp AI Assistant with Persistent Memory
-
-Architecture:
-
-Trigger (Twilio WhatsApp)  
-→ Message Processing  
-→ OpenAI Agent  
-→ PostgreSQL Memory Storage  
-→ Response Generation  
-→ Automated Reply via WhatsApp  
+This portfolio demonstrates real-world AI automation systems deployed in production environments, including conversational AI agents and intelligent document processing pipelines.
 
 ---
 
-## Key Features
+# Project 1 — WhatsApp AI Assistant with Persistent Memory
 
-• Context-aware AI assistant with persistent conversation memory  
-• Automated customer interaction via WhatsApp  
-• Integration with PostgreSQL for long-term memory  
-• Structured workflow orchestration using n8n  
-• Production-ready modular architecture  
-• Secure credential handling using placeholders  
+## Overview
 
----
+An AI-powered WhatsApp assistant capable of maintaining persistent memory, understanding user intent, and responding contextually using LLMs and PostgreSQL.
 
-## Tech Stack
+This system is fully automated and deployed using Twilio webhooks and n8n workflow orchestration.
 
-• n8n – workflow orchestration  
-• OpenAI – natural language processing  
-• Twilio – WhatsApp messaging integration  
-• PostgreSQL – persistent memory database  
-• Docker / VPS – production deployment  
+## Architecture
 
----
+WhatsApp → Twilio → n8n → AI Agent → PostgreSQL Memory → WhatsApp Response
+
+## Capabilities
+
+• Persistent conversation memory using PostgreSQL  
+• Context-aware AI responses using LLM  
+• Automated WhatsApp message handling  
+• Production webhook architecture  
+• Scalable workflow orchestration using n8n  
 
 ## Workflow File
 
 `whatsapp-ai-assistant-sanitized.json`
 
-This file contains the full automation workflow with placeholders for credentials.
+---
+
+# Project 2 — Automated Invoice Processing System (OCR + AI)
+
+## Overview
+
+Fully automated system that extracts structured financial data from invoice images received via Gmail.
+
+Uses Google Vision OCR combined with LLM extraction to convert unstructured invoice images into structured data stored in Google Sheets and delivered via Telegram.
+
+## Architecture
+
+Gmail → Google Vision OCR → LLM extraction → Data normalization → Google Sheets → Telegram notification
+
+## Capabilities
+
+• OCR extraction from invoice images  
+• Structured JSON generation using LLM  
+• Automated financial data normalization  
+• Google Sheets integration  
+• Telegram notifications  
+• Fully automated email-triggered pipeline  
+
+## Workflow File
+
+`factura-telegram-gmail-v5-sanitized.json`
 
 ---
 
-## Author
+# Technical Stack
+
+• n8n — workflow orchestration  
+• OpenAI / LLM — natural language processing  
+• PostgreSQL — persistent memory database  
+• Twilio WhatsApp API — messaging integration  
+• Google Vision OCR — document data extraction  
+• Google Sheets API — structured data storage  
+• Telegram API — automated notifications  
+• Docker / VPS — production deployment  
+
+---
+
+# Author
 
 Carlos Restrepo  
 AI Automation Engineer  
-Specializing in LLM workflows, automation pipelines, and conversational AI systems.
+
+Specializing in:
+
+• LLM automation systems  
+• Conversational AI agents  
+• Intelligent document processing  
+• Workflow orchestration using n8n  
+
+GitHub: https://github.com/ebseducacioncolombia-tech
