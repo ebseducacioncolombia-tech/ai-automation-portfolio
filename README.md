@@ -91,12 +91,9 @@
 | Accountant | 3 | 1 | $0.07M |
 
 ### Power BI Risk Dashboard / Dashboard de Riesgo en Power BI
-
-![FINTRAC Violations & Penalties Trend 2020–2026](images/fintrac_trend.png)
-*Page 1 — Trend Over Time: violation count (bars) vs. AMP amount in CAD (line) · Province & Institution Type filters · 2025 enforcement spike clearly visible*
-
-![FINTRAC Geographic Risk Heatmap — Canada](images/fintrac_map.png)
-*Page 3 — Geographic Risk Heatmap: bubble size = violation count · color intensity = AMP concentration · BC and ON dominate enforcement geography*
+<img width="775" height="436" alt="image" src="https://github.com/user-attachments/assets/e2ff527c-1c93-4c22-bc44-ba5a9ed97cf1" />
+<img width="693" height="451" alt="image" src="https://github.com/user-attachments/assets/4f8738ea-dad2-4e6f-985e-03ed61bc2d3c" />
+<img width="786" height="444" alt="image" src="https://github.com/user-attachments/assets/a35f6e47-ff41-4909-9476-bc72f9f23cf8" />
 
 **4 dashboard pages / 4 páginas del dashboard:**
 * **Trend Over Time** — violations + AMP by year, filterable by province and institution type
