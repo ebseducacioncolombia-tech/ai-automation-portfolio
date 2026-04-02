@@ -212,8 +212,16 @@ Data Load (SQLAlchemy + PostgreSQL) → Cleaning → IVC Feature Engineering →
 
 ### Dashboard / Visualización
 
-![Dashboard Overview](images/dashboard_overview.png)
-*Interactive Power BI dashboard — 4 KPIs + traffic-light slicer + A/B/C scenario analysis*
+<img width="1134" height="556" alt="image" src="https://github.com/user-attachments/assets/c606852f-754a-465d-a45e-a4e34cf2b09c" />
+
+<img width="802" height="496" alt="image" src="https://github.com/user-attachments/assets/323c6307-191f-4323-b516-6a1ef6a43ee1" />
+
+<img width="759" height="451" alt="image" src="https://github.com/user-attachments/assets/9625313e-b863-4055-8fb6-2d865579c360" />
+
+
+
+
+
 
 ### Stack
 
