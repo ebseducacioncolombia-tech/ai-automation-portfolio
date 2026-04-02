@@ -94,9 +94,7 @@
 
 <img width="715" height="457" alt="image" src="https://github.com/user-attachments/assets/fa090341-685b-4f45-b61e-b313bf038f8e" />
 <img width="822" height="452" alt="image" src="https://github.com/user-attachments/assets/1dc9b674-25b3-4d24-bc91-2d20b34f55ab" />
-
-
-
+<img width="787" height="449" alt="image" src="https://github.com/user-attachments/assets/bab4c240-f556-49d7-a980-1bc528eda725" />
 
 **4 dashboard pages / 4 páginas del dashboard:**
 * **Trend Over Time** — violations + AMP by year, filterable by province and institution type
