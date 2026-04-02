@@ -92,7 +92,7 @@
 
 ### Power BI Risk Dashboard / Dashboard de Riesgo en Power BI
 
-<img width="1264" height="682" alt="image" src="https://github.com/user-attachments/assets/85d109b7-417d-46ab-98ce-93d6e02f353e" />
+<img width="715" height="457" alt="image" src="https://github.com/user-attachments/assets/fa090341-685b-4f45-b61e-b313bf038f8e" />
 <img width="822" height="452" alt="image" src="https://github.com/user-attachments/assets/1dc9b674-25b3-4d24-bc91-2d20b34f55ab" />
 
 
