@@ -338,7 +338,7 @@ WhatsApp → Twilio Webhook → n8n → AI Agent (OpenAI) → PostgreSQL Memory 
 * Production webhook architecture on Docker/VPS
 * Scalable workflow orchestration via n8n
 
-* [checkcomplete proyect at](https://www.ebs.com.co/agendaia/) 
+[Clic here to watch the Whatsapp automation video](https://www.ebs.com.co/agendaia/) 
 
 ### Stack
 
