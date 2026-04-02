@@ -92,9 +92,11 @@
 
 ### Power BI Risk Dashboard / Dashboard de Riesgo en Power BI
 
-<img width="715" height="457" alt="image" src="https://github.com/user-attachments/assets/fa090341-685b-4f45-b61e-b313bf038f8e" />
-<img width="822" height="452" alt="image" src="https://github.com/user-attachments/assets/1dc9b674-25b3-4d24-bc91-2d20b34f55ab" />
-<img width="787" height="449" alt="image" src="https://github.com/user-attachments/assets/bab4c240-f556-49d7-a980-1bc528eda725" />
+![FINTRAC Violations & Penalties Trend 2020–2026](images/fintrac_trend.png)
+*Page 1 — Trend Over Time: violation count (bars) vs. AMP amount in CAD (line) · Province & Institution Type filters · 2025 enforcement spike clearly visible*
+
+![FINTRAC Geographic Risk Heatmap — Canada](images/fintrac_map.png)
+*Page 3 — Geographic Risk Heatmap: bubble size = violation count · color intensity = AMP concentration · BC and ON dominate enforcement geography*
 
 **4 dashboard pages / 4 páginas del dashboard:**
 * **Trend Over Time** — violations + AMP by year, filterable by province and institution type
@@ -213,16 +215,8 @@ Data Load (SQLAlchemy + PostgreSQL) → Cleaning → IVC Feature Engineering →
 
 ### Dashboard / Visualización
 
-<img width="1134" height="556" alt="image" src="https://github.com/user-attachments/assets/c606852f-754a-465d-a45e-a4e34cf2b09c" />
-
-<img width="802" height="496" alt="image" src="https://github.com/user-attachments/assets/323c6307-191f-4323-b516-6a1ef6a43ee1" />
-
-<img width="759" height="451" alt="image" src="https://github.com/user-attachments/assets/9625313e-b863-4055-8fb6-2d865579c360" />
-
-
-
-
-
+![Dashboard Overview](images/dashboard_overview.png)
+*Interactive Power BI dashboard — 4 KPIs + traffic-light slicer + A/B/C scenario analysis*
 
 ### Stack
 
