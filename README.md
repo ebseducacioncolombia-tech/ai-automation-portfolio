@@ -36,7 +36,7 @@
 | Metric / Métrica | Value / Valor |
 | --- | --- |
 | Total violations / infracciones totales | **307 across 80 institutions (2020–2026)** |
-| Total penalties / Penalidades totales | **$235.1M CAD** |
+| Total AMP ($ penalties) / Penalidades totales | **$235.1M CAD** |
 | Largest single penalty / Mayor penalidad individual | **$176.9M CAD — Foreign Fintech MSB, BC** |
 | Peak enforcement year / Año pico de enforcement | **2025 — 119 violations (+138% vs. 2024)** |
 | Appeal rate / Tasa de apelación | **40% of institutions — Federal Court** |
