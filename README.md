@@ -29,13 +29,13 @@
 
 **EN:** End-to-end regulatory intelligence project analyzing **307 violations across 80 institutions** penalized by FINTRAC (Canada's financial intelligence unit) between 2020 and 2026. Built entirely from primary sources: FINTRAC public notices, OSFI Annual Risk Outlook 2025–2026, FCAC guidance, and Statistics Canada. The project spans four phases — regulatory framework mapping, dataset design & cleaning, research analysis (Phase 3), and quantitative compliance synthesis (Phase 4) — producing a structured Excel analytical model, a Power BI risk dashboard, and two executive-grade compliance reports. The analysis identifies enforcement patterns, sector risk profiles, provincial concentration, and the systemic drivers behind a **138% surge in violations in 2025**.
 
-**ES:** Proyecto de inteligencia regulatoria de extremo a extremo que analiza **307 violaciones en 80 instituciones** penalizadas por FINTRAC (la unidad de inteligencia financiera de Canadá) entre 2020 y 2026. Construido íntegramente desde fuentes primarias: avisos públicos de FINTRAC, OSFI Annual Risk Outlook 2025–2026, lineamientos de FCAC y Statistics Canada. El proyecto abarca cuatro fases — mapeo del marco regulatorio, diseño y limpieza del dataset, análisis de investigación (Fase 3), y síntesis de cumplimiento cuantitativa (Fase 4) — produciendo un modelo analítico en Excel, un dashboard de riesgo en Power BI, y dos reportes ejecutivos de cumplimiento. El análisis identifica patrones de enforcement, perfiles de riesgo por sector, concentración provincial y los drivers sistémicos detrás de un **incremento del 138% en violaciones en 2025**.
+**ES:** Proyecto de inteligencia regulatoria de extremo a extremo que analiza **307 infracciones en 80 instituciones** penalizadas por FINTRAC (la unidad de inteligencia financiera de Canadá) entre 2020 y 2026. Construido íntegramente desde fuentes primarias: avisos públicos de FINTRAC, OSFI Annual Risk Outlook 2025–2026, lineamientos de FCAC y Statistics Canada. El proyecto abarca cuatro fases — mapeo del marco regulatorio, diseño y limpieza del dataset, análisis de investigación (Fase 3), y síntesis de cumplimiento cuantitativa (Fase 4) — produciendo un modelo analítico en Excel, un dashboard de riesgo en Power BI, y dos reportes ejecutivos de cumplimiento. El análisis identifica patrones de enforcement, perfiles de riesgo por sector, concentración provincial y los drivers sistémicos detrás de un **incremento del 138% en infracciones en 2025**.
 
 ### Dataset at a Glance / Resumen del Dataset
 
 | Metric / Métrica | Value / Valor |
 | --- | --- |
-| Total violations / Violaciones totales | **307 across 80 institutions (2020–2026)** |
+| Total violations / infracciones totales | **307 across 80 institutions (2020–2026)** |
 | Total penalties / Penalidades totales | **$235.1M CAD** |
 | Largest single penalty / Mayor penalidad individual | **$176.9M CAD — Foreign Fintech MSB, BC** |
 | Peak enforcement year / Año pico de enforcement | **2025 — 119 violations (+138% vs. 2024)** |
@@ -76,7 +76,7 @@
 
 *2026: partial year data through March 2026*
 
-### Violations by Sector / Violaciones por Sector
+### Violations by Sector / infracciones por Sector
 
 | Sector | Violations | Institutions | Total AMP (CAD) |
 | --- | --- | --- | --- |
